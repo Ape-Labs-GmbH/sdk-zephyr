@@ -6,6 +6,7 @@
 
 #include <zephyr/sw_isr_table.h>
 #include <zephyr/spinlock.h>
+#include <errno.h>
 
 /* an interrupt line can be considered shared only if there's
  * at least 2 clients using it. As such, enforce the fact that

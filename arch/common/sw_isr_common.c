@@ -107,6 +107,7 @@ unsigned int z_get_sw_isr_table_idx(unsigned int irq)
 	return table_idx;
 }
 
+#if !CONFIG_DYNAMIC_INTERRUPTS
 void z_isr_install(unsigned int irq, void (*routine)(const void *),
 		   const void *param)
 {
@@ -129,6 +130,7 @@ void z_isr_install(unsigned int irq, void (*routine)(const void *),
 	_sw_isr_table[table_idx].arg = param;
 	_sw_isr_table[table_idx].isr = routine;
 }
+#endif
 
 /* Some architectures don't/can't interpret flags or priority and have
  * no more processing to do than this.  Provide a generic fallback.
