@@ -1,0 +1,22 @@
+/*
+ * Copyright (c) 2021 Nordic Semiconductor ASA
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+dmic_dev: &pdm0 {
+	status = "okay";
+	clk-pin = <11>;
+	din-pin = <12>;
+	clock-source = "PCLK32M_HFXO";
+};
+
+
+&uart0 {
+	status = "okay";
+	compatible = "nordic,nrf-uarte";
+	current-speed = <115200>;
+	rx-pin = <13>; // This will be overriden at runtime depending on apelabs_device_config
+	tx-pin = <14>; // This will be overriden at runtime depending on apelabs_device_config
+	label = "UART_0";
+};
