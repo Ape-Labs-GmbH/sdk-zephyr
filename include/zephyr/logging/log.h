@@ -443,6 +443,14 @@ void z_log_vprintk(const char *fmt, va_list ap);
 #define LOG_HEXDUMP_INF(...) (void) 0
 #endif
 
+#if !defined(CONFIG_LOG) && defined(CONFIG_PRINTK)
+#include <kernel.h>
+
+#undef LOG_ERR
+#define LOG_ERR(...) printk(__VA_ARGS__); printk("\n")
+
+#endif
+
 /**
  * @}
  */
